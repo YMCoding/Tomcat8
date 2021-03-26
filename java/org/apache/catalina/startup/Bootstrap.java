@@ -334,8 +334,9 @@ public final class Bootstrap {
      */
     public void init(String[] arguments)
         throws Exception {
-
+        // 初始化catalina
         init();
+        // 反射执行catalina.load方法
         load(arguments);
 
     }

@@ -541,7 +541,7 @@ public class Catalina {
         // Before digester - it may be needed
         initNaming();
 
-        // Create and execute our Digester
+        // 创建Digester，用来解析server.xml文件
         Digester digester = createStartDigester();
 
         InputSource inputSource = null;
@@ -607,6 +607,7 @@ public class Catalina {
             try {
                 inputSource.setByteStream(inputStream);
                 digester.push(this);
+                // 执行完创建server对象
                 digester.parse(inputSource);
             } catch (SAXParseException spe) {
                 log.warn("Catalina.start using " + getConfigFile() + ": " +
@@ -635,6 +636,7 @@ public class Catalina {
 
         // Start the new server
         try {
+            // 执行init防范
             getServer().init();
         } catch (LifecycleException e) {
             if (Boolean.getBoolean("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE")) {

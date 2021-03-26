@@ -1040,6 +1040,7 @@ public abstract class AbstractEndpoint<S> {
             }
             SocketProcessorBase<S> sc = processorCache.pop();
             if (sc == null) {
+                // 抽象类
                 sc = createSocketProcessor(socketWrapper, event);
             } else {
                 sc.reset(socketWrapper, event);
